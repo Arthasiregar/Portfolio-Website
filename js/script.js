@@ -27,3 +27,28 @@ tabBtns.forEach((btn, index) => {
     });
   });
 });
+
+// Certificate modal
+const certModal = document.getElementById('certModal');
+const certModalImg = document.getElementById('certModalImg');
+const certModalClose = document.getElementById('certModalClose');
+
+document.querySelectorAll('.view-cert-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const imgSrc = btn.getAttribute('data-img');
+    certModalImg.setAttribute('src', imgSrc);
+    certModal.classList.add('active');
+  });
+});
+
+function closeCertModal() {
+  certModal.classList.remove('active');
+  certModalImg.setAttribute('src', '');
+}
+
+certModalClose.addEventListener('click', closeCertModal);
+
+certModal.addEventListener('click', (e) => {
+  if (e.target === certModal) closeCertModal();
+});
