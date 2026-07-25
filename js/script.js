@@ -52,3 +52,27 @@ certModalClose.addEventListener('click', closeCertModal);
 certModal.addEventListener('click', (e) => {
   if (e.target === certModal) closeCertModal();
 });
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const contactForm = document.getElementById('contactForm');
+
+contactForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const submitBtn = contactForm.querySelector('.btn-submit');
+  const originalText = submitBtn.innerHTML;
+
+  submitBtn.innerHTML = '<span>Sending...</span>';
+  submitBtn.disabled = true;
+
+  setTimeout(() => {
+    submitBtn.innerHTML = '<span>Message Sent ✓</span>';
+    contactForm.reset();
+
+    setTimeout(() => {
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
+    }, 2000);
+  }, 1000);
+});
