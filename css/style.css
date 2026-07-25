@@ -1,16 +1,18 @@
 :root {
-  --bg: #1B120B;
-  --bg-alt: #241810;
-  --surface: #2E2015;
-  --surface-raised: #3B2A1B;
-  --border: rgba(198, 156, 109, 0.18);
-  --border-strong: rgba(198, 156, 109, 0.38);
-  --text: #F1E4D3;
-  --text-muted: #B99B7D;
-  --text-dim: #8A6F58;
-  --accent: #D4A574;
-  --accent-deep: #A8672E;
-  --accent-glow: rgba(212, 165, 116, 0.22);
+  --bg: #F3E5D8;
+  --bg-alt: #EAD6C2;
+  --surface: #FFFBF6;
+  --surface-alt: #F7EDE3;
+  --border: rgba(139, 94, 52, 0.16);
+  --border-strong: rgba(139, 94, 52, 0.32);
+  --text: #4A2E1F;
+  --text-muted: #8C6A4F;
+  --text-dim: #B79A7D;
+  --accent: #C17A3D;
+  --accent-deep: #8A4B23;
+  --accent-glow: rgba(193, 122, 61, 0.25);
+  --shadow: rgba(74, 46, 31, 0.14);
+  --shadow-strong: rgba(74, 46, 31, 0.24);
 }
 
 * {
@@ -23,7 +25,7 @@ body {
   font-family: 'Inter', sans-serif;
   background-color: var(--bg);
   background-image:
-    radial-gradient(circle at 1px 1px, rgba(212, 165, 116, 0.06) 1px, transparent 0);
+    radial-gradient(circle at 1px 1px, rgba(139, 94, 52, 0.08) 1px, transparent 0);
   background-size: 22px 22px;
   color: var(--text);
   line-height: 1.6;
@@ -56,7 +58,7 @@ h1, h2, h3, h4 {
 .navbar.scrolled {
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(10px);
-  background-color: rgba(27, 18, 11, 0.85);
+  background-color: rgba(243, 229, 216, 0.85);
 }
 
 .logo {
@@ -65,7 +67,7 @@ h1, h2, h3, h4 {
   font-size: 0.95rem;
   letter-spacing: 0.02em;
   text-decoration: none;
-  color: var(--accent);
+  color: var(--accent-deep);
 }
 
 .logo::before {
@@ -111,7 +113,7 @@ h1, h2, h3, h4 {
   padding: 0.55rem 1.15rem;
   background-color: transparent;
   border: 1px solid var(--border-strong);
-  color: var(--accent);
+  color: var(--accent-deep);
   text-decoration: none;
   border-radius: 6px;
   font-size: 0.85rem;
@@ -122,8 +124,8 @@ h1, h2, h3, h4 {
 
 .btn-cv:hover {
   background-color: var(--accent);
-  color: var(--bg);
-  box-shadow: 0 0 24px var(--accent-glow);
+  color: var(--surface);
+  box-shadow: 0 8px 20px var(--accent-glow);
 }
 
 /* ===== Section base ===== */
@@ -167,7 +169,7 @@ section h2 {
   width: 360px;
   height: 360px;
   background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-  opacity: 0.12;
+  opacity: 0.16;
   border-radius: 50%;
   z-index: -1;
 }
@@ -191,8 +193,8 @@ section h2 {
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 1.3rem;
-  border: 2px solid var(--border-strong);
-  box-shadow: 0 0 0 8px rgba(212, 165, 116, 0.06), 0 20px 40px rgba(0, 0, 0, 0.5);
+  border: 3px solid var(--surface);
+  box-shadow: 0 0 0 4px var(--border-strong), 0 20px 40px var(--shadow-strong);
 }
 
 .hero h1 {
@@ -232,7 +234,7 @@ section h2 {
 }
 
 .social-links a:hover {
-  color: var(--accent);
+  color: var(--accent-deep);
   border-color: var(--accent);
 }
 
@@ -262,14 +264,15 @@ section h2 {
   font-size: 0.88rem;
   font-weight: 500;
   color: var(--text-muted);
-  transition: transform 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: transform 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .skill-card:hover {
   transform: translateY(-6px);
   border-color: var(--accent);
-  color: var(--accent);
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35);
+  color: var(--accent-deep);
+  box-shadow: 0 16px 32px var(--shadow-strong);
 }
 
 /* ===== Projects ===== */
@@ -284,6 +287,7 @@ section h2 {
   margin: 0 auto 2.5rem;
   left: 50%;
   transform: translateX(-50%);
+  box-shadow: 0 2px 10px var(--shadow);
 }
 
 .tab-indicator {
@@ -326,18 +330,18 @@ section h2 {
 }
 
 .tab-btn.active {
-  color: var(--bg);
+  color: var(--surface);
 }
 
 .tab-count {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(74, 46, 31, 0.08);
   font-size: 0.7rem;
   padding: 0.1rem 0.45rem;
   border-radius: 20px;
 }
 
 .tab-btn.active .tab-count {
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: rgba(255, 255, 255, 0.25);
 }
 
 .projects-panel {
@@ -361,20 +365,21 @@ section h2 {
   border: 1px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0 2px 10px var(--shadow);
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .project-card:hover {
   transform: translateY(-6px);
   border-color: var(--border-strong);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 20px 40px var(--shadow-strong);
 }
 
 .project-card img {
   width: 100%;
   height: 160px;
   object-fit: cover;
-  filter: saturate(0.9) contrast(1.05);
+  filter: saturate(1.05) contrast(1.02);
   border-bottom: 1px solid var(--border);
 }
 
@@ -401,9 +406,9 @@ section h2 {
 }
 
 .project-tags span {
-  background-color: rgba(212, 165, 116, 0.1);
+  background-color: rgba(193, 122, 61, 0.1);
   border: 1px solid var(--border);
-  color: var(--accent);
+  color: var(--accent-deep);
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.7rem;
   padding: 0.2rem 0.6rem;
@@ -415,7 +420,7 @@ section h2 {
   margin-right: 1rem;
   font-size: 0.85rem;
   font-weight: 500;
-  color: var(--accent);
+  color: var(--accent-deep);
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: border-color 0.2s ease;
@@ -429,7 +434,7 @@ section h2 {
 .timeline {
   position: relative;
   padding-left: 1.6rem;
-  border-left: 1px solid var(--border);
+  border-left: 1px solid var(--border-strong);
 }
 
 .timeline-item {
@@ -446,13 +451,13 @@ section h2 {
   height: 10px;
   border-radius: 50%;
   background-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(212, 165, 116, 0.15);
+  box-shadow: 0 0 0 4px rgba(193, 122, 61, 0.18);
 }
 
 .timeline-date {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.78rem;
-  color: var(--accent);
+  color: var(--accent-deep);
   font-weight: 500;
 }
 
@@ -468,7 +473,7 @@ section h2 {
 }
 
 .timeline-item p {
-  color: var(--text-dim);
+  color: var(--text-muted);
   font-size: 0.92rem;
 }
 
@@ -484,13 +489,14 @@ section h2 {
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 1.4rem;
+  box-shadow: 0 2px 10px var(--shadow);
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .cert-card:hover {
   transform: translateY(-6px);
   border-color: var(--border-strong);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 20px 40px var(--shadow-strong);
 }
 
 .cert-top {
@@ -507,6 +513,7 @@ section h2 {
   border-radius: 10px;
   border: 1px solid var(--border);
   flex-shrink: 0;
+  background-color: var(--surface);
 }
 
 .cert-title-group h3 {
@@ -536,9 +543,9 @@ section h2 {
 }
 
 .cert-skills-tags span {
-  background-color: rgba(212, 165, 116, 0.1);
+  background-color: rgba(193, 122, 61, 0.1);
   border: 1px solid var(--border);
-  color: var(--accent);
+  color: var(--accent-deep);
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.7rem;
   padding: 0.2rem 0.6rem;
@@ -549,7 +556,7 @@ section h2 {
 .cert-preview {
   display: flex;
   gap: 0.7rem;
-  background-color: var(--bg-alt);
+  background-color: var(--surface-alt);
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 0.7rem;
@@ -579,7 +586,7 @@ section h2 {
 .cert-preview-text p {
   margin: 0;
   font-size: 0.75rem;
-  color: var(--text-dim);
+  color: var(--text-muted);
   line-height: 1.4;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -594,7 +601,7 @@ section h2 {
   position: fixed;
   z-index: 1000;
   inset: 0;
-  background: rgba(15, 10, 6, 0.92);
+  background: rgba(30, 18, 10, 0.88);
   align-items: center;
   justify-content: center;
 }
@@ -607,15 +614,15 @@ section h2 {
   max-width: 90%;
   max-height: 85vh;
   border-radius: 8px;
-  border: 1px solid var(--border-strong);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+  border: 3px solid var(--surface);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
 }
 
 .cert-modal-close {
   position: absolute;
   top: 20px;
   right: 30px;
-  color: var(--text);
+  color: var(--surface);
   font-size: 36px;
   font-weight: bold;
   cursor: pointer;
@@ -634,6 +641,7 @@ section h2 {
   border-radius: 20px;
   padding: 2.5rem 2rem 0;
   overflow: hidden;
+  box-shadow: 0 4px 24px var(--shadow);
 }
 
 .contact-card::before {
@@ -646,14 +654,14 @@ section h2 {
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  opacity: 0.5;
+  opacity: 0.55;
   pointer-events: none;
   animation: borderGlow 6s ease infinite;
 }
 
 @keyframes borderGlow {
-  0%, 100% { opacity: 0.35; }
-  50% { opacity: 0.7; }
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
 }
 
 .contact-card h2 {
@@ -704,7 +712,7 @@ section h2 {
 }
 
 .info-row:hover {
-  color: var(--accent);
+  color: var(--accent-deep);
   transform: translateX(4px);
 }
 
@@ -717,12 +725,12 @@ section h2 {
   flex-shrink: 0;
   background: linear-gradient(135deg, var(--accent), var(--accent-deep));
   border-radius: 8px;
-  color: var(--bg);
+  color: var(--surface);
   font-size: 0.95rem;
 }
 
 .contact-divider {
-  background-color: var(--border);
+  background-color: var(--border-strong);
 }
 
 .contact-form-col {
@@ -735,7 +743,7 @@ section h2 {
 .contact-form-col textarea {
   width: 100%;
   padding: 0.75rem 1rem;
-  background-color: var(--bg-alt);
+  background-color: var(--bg);
   border: 1px solid var(--border);
   border-radius: 10px;
   color: var(--text);
@@ -769,7 +777,7 @@ section h2 {
   gap: 0.6rem;
   padding: 0.75rem 1.6rem;
   background: linear-gradient(135deg, var(--accent), var(--accent-deep));
-  color: var(--bg);
+  color: var(--surface);
   border: none;
   border-radius: 30px;
   font-family: 'JetBrains Mono', monospace;
@@ -804,7 +812,7 @@ section h2 {
   font-family: 'JetBrains Mono', monospace;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: var(--accent);
+  color: var(--accent-deep);
   font-size: 0.95rem;
 }
 
@@ -829,7 +837,7 @@ section h2 {
 }
 
 .footer-nav a:hover {
-  color: var(--accent);
+  color: var(--accent-deep);
 }
 
 .footer-socials {
@@ -852,7 +860,7 @@ section h2 {
 
 .footer-socials a:hover {
   border-color: var(--accent);
-  color: var(--accent);
+  color: var(--accent-deep);
   transform: translateY(-3px);
 }
 
@@ -862,3 +870,4 @@ section h2 {
     text-align: center;
   }
 }
+
