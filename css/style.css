@@ -627,148 +627,238 @@ section h2 {
 }
 
 /* ===== Contact ===== */
-.contact-intro {
-  text-align: center;
-  color: var(--text-muted);
-  max-width: 500px;
-  margin: 0 auto 2.5rem;
+.contact-card {
+  position: relative;
+  background-color: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 20px;
+  padding: 2.5rem 2rem 0;
+  overflow: hidden;
 }
 
-.contact-wrapper {
+.contact-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: 20px;
+  background: linear-gradient(120deg, var(--accent), transparent 30%, transparent 70%, var(--accent-deep));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.5;
+  pointer-events: none;
+  animation: borderGlow 6s ease infinite;
+}
+
+@keyframes borderGlow {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.7; }
+}
+
+.contact-card h2 {
+  margin-bottom: 2rem;
+}
+
+.contact-card-inner {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 2.5rem;
-  align-items: start;
+  grid-template-columns: 1fr 1px 1.3fr;
+  gap: 2.2rem;
+  padding-bottom: 2.2rem;
 }
 
 @media (max-width: 700px) {
-  .contact-wrapper {
+  .contact-card-inner {
     grid-template-columns: 1fr;
+  }
+  .contact-divider {
+    display: none;
   }
 }
 
-.contact-form {
-  background-color: var(--surface);
-  border: 1px solid var(--border);
-  padding: 1.8rem;
-  border-radius: 14px;
-}
-
-.form-group {
-  margin-bottom: 1.2rem;
-}
-
-.form-group label {
-  display: block;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.78rem;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 0.7rem 0.9rem;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.9rem;
+.contact-info-col h3 {
+  font-size: 1rem;
+  font-style: normal;
+  margin-bottom: 1rem;
   color: var(--text);
-  background-color: var(--bg-alt);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-  color: var(--text-dim);
+.contact-info-col h3:not(:first-child) {
+  margin-top: 1.8rem;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-glow);
-}
-
-.form-group textarea {
-  resize: vertical;
-}
-
-.btn-submit {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  width: 100%;
-  padding: 0.85rem;
-  background: linear-gradient(135deg, var(--accent), var(--accent-deep));
-  color: var(--bg);
-  border: none;
-  border-radius: 8px;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 600;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.btn-submit:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px var(--accent-glow);
-}
-
-.btn-submit i {
-  font-size: 1.05rem;
-  transition: transform 0.2s ease;
-}
-
-.btn-submit:hover i {
-  transform: translateX(3px);
-}
-
-.contact-info {
+.info-list {
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
 }
 
-.contact-item {
+.info-row {
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  padding: 1rem 1.2rem;
-  background-color: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
   text-decoration: none;
   color: var(--text-muted);
+  font-size: 0.88rem;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.info-row:hover {
+  color: var(--accent);
+  transform: translateX(4px);
+}
+
+.icon-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+  border-radius: 8px;
+  color: var(--bg);
+  font-size: 0.95rem;
+}
+
+.contact-divider {
+  background-color: var(--border);
+}
+
+.contact-form-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form-col input,
+.contact-form-col textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
   font-size: 0.9rem;
-  font-weight: 500;
-  transition: transform 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.contact-item:hover {
-  transform: translateX(6px);
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
-.contact-item i {
-  font-size: 1.2rem;
-  color: var(--accent);
-}
-
-/* ===== Footer ===== */
-.footer {
-  text-align: center;
-  padding: 2.2rem 1rem;
+.contact-form-col input::placeholder,
+.contact-form-col textarea::placeholder {
   color: var(--text-dim);
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
+}
+
+.contact-form-col input:focus,
+.contact-form-col textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.contact-form-col textarea {
+  resize: vertical;
+}
+
+.btn-send {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.6rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+  color: var(--bg);
+  border: none;
+  border-radius: 30px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-send:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px var(--accent-glow);
+}
+
+.contact-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
   border-top: 1px solid var(--border);
-  margin-top: 2rem;
+  padding: 1.4rem 0;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.footer-logo {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  font-size: 0.95rem;
+}
+
+.footer-copy {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  border-left: 1px solid var(--border);
+  padding-left: 0.9rem;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 1.3rem;
+}
+
+.footer-nav a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  transition: color 0.25s ease;
+}
+
+.footer-nav a:hover {
+  color: var(--accent);
+}
+
+.footer-socials {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.footer-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.footer-socials a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-3px);
+}
+
+@media (max-width: 600px) {
+  .contact-card-footer {
+    flex-direction: column;
+    text-align: center;
+  }
 }
